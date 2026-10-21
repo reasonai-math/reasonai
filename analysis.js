@@ -19,7 +19,7 @@ return fractionValue(a)===q.decimal||compact===pair[0]+'>'+pair[1]||compact===pa
 }
 function fractionValue(a){const m=a.match(/^(\d+)\s*\/\s*(\d+)$/);return m?(+m[2]?+m[1]/+m[2]:NaN):/^\d*\.\d+$/.test(a)?Number(a):NaN;}
 
-const VERSION='fractions-rules-5-expert';
+const VERSION='fractions-rules-6-talent';
 const close=(a,b)=>Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<1e-9;
 // Arithmetic only: no eval, and no matching suffixes inside a larger expression.
 function numberValue(expression){
@@ -52,7 +52,7 @@ function analyse(q,answer,reason){
 const ok=correct(q,answer),r=normal(reason),math=mathematicalText(reason);
 const follow=questions[q.follow].prompt;
 function result(quality,pattern,intervention,misconception='No specific misconception identified',confidence='Medium'){
-return {ok,quality,pattern,reviewReason:quality==='Needs teacher review'?pattern:null,misconception,confidence,intervention,evidence:reason,follow,analysisVersion:VERSION};
+return {ok,quality,algorithmicProfile:quality==='Supported reasoning'?(pattern.includes('decimal')?'Computational Efficiency':pattern.includes('benchmark')?'Pattern Recognition':pattern.includes('equivalent')||pattern.includes('denominator')?'Abstraction':'Computational Efficiency'):null,reasoningDepth:quality==='Supported reasoning'?3:null,reviewReason:quality==='Needs teacher review'?pattern:null,misconception,confidence,intervention,evidence:reason,follow,analysisVersion:VERSION};
 }
 const review=(why,help,confidence='Medium')=>result('Needs teacher review',why,help,undefined,confidence);
 const signal=(why,help)=>result('Misconception signal',why,help,'Possible misconception: '+why);
