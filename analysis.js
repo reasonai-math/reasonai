@@ -19,7 +19,8 @@ return fractionValue(a)===q.decimal||compact===pair[0]+'>'+pair[1]||compact===pa
 }
 function fractionValue(a){const m=a.match(/^(\d+)\s*\/\s*(\d+)$/);return m?(+m[2]?+m[1]/+m[2]:NaN):/^\d*\.\d+$/.test(a)?Number(a):NaN;}
 
-const VERSION='fractions-rules-6-talent';
+const VERSION='fractions-rules-7-pilot-demo';
+// Synthetic pilot records are UI demonstrations only; rule analysis is not validated research evidence.
 const close=(a,b)=>Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<1e-9;
 // Arithmetic only: no eval, and no matching suffixes inside a larger expression.
 function numberValue(expression){
