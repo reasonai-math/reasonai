@@ -1,3 +1,4 @@
+/* ReasonAI release v2.1_pilot — asset cache-busting configured in index.html. */
 const {questions,analyse}=ReasonEngine;
 const app=document.getElementById('app');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
